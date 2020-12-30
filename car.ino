@@ -43,18 +43,17 @@ void sense(void) {
        if (code == 'X'){
        codex = 'X';
        }
-       if (code == 'A' && codex == 'X'){        //后
+       if (code == 'B' && codex == 'X'){        //前
         qian();
         codex == 0 ;
        }
-       if (code == 'B' && codex == 'X'){        //前
+       if (code == 'A' && codex == 'X'){        //后
         hou();
         codex == 0 ;
        }
        if (code == 'C' && codex == 'X'){        //左
         zuo();
         codex == 0 ;
-
        }
        if (code == 'E' && codex == 'X'){        //右
         you();
@@ -65,19 +64,19 @@ void sense(void) {
         codex == 0 ;
        }
        if (code == 'G' && codex == 'X'){        //向上
-        servo_left();            
+        servo_up();            
         codex == 0 ;
        }
        if (code == 'H' && codex == 'X'){        //向下
-        servo_right();             
+        servo_down();             
         codex == 0 ;
        }
        if (code == 'J' && codex == 'X'){        //向左
-        servo_up();              
+        servo_left();              
         codex == 0 ;
        }
        if (code == 'K' && codex == 'X'){        //向右
-        servo_down();             
+        servo_right();             
         codex == 0 ;
        }   
    }
@@ -95,7 +94,7 @@ void ting(void)
           delay(500);
         }
         
-void qian(void)
+void hou(void)
         { 
           analogWrite(EA,254);//调节参数可调速度（0-255）
           analogWrite(EB,255);//调节参数可调速度（0-255）    
@@ -111,7 +110,7 @@ void qian(void)
           digitalWrite(EN4,LOW);   
           digitalWrite(EN5,LOW);     
         }
-void hou(void)
+void qian(void)
         {  
           analogWrite(EA,255);//调节参数可调速度（0-255）
           analogWrite(EB,255); //调节参数可调速度（0-255）     
@@ -161,7 +160,7 @@ void you(void)
           
         }  
 //舵机左转
-void servo_left()
+void servo_up()
 {
   int servotemp=servoX.read();//获取舵机目前的角度值
   servotemp-=2;//舵机运动1度
@@ -173,7 +172,7 @@ void servo_left()
 
 
 //舵机右转
-void servo_right()
+void servo_down()
 {
   int servotemp=servoX.read();//获取舵机目前的角度值
   servotemp+=2;//舵机运动1度
@@ -185,7 +184,7 @@ void servo_right()
 
 
 //舵机上转
-void servo_up()
+void servo_left()
 {
   int servotemp1=servoY.read();//获取舵机目前的角度值
   servotemp1+=2;//舵机运动1度
@@ -197,7 +196,7 @@ void servo_up()
 
 
 //舵机下转
-void servo_down()
+void servo_right()
 {
   int servotemp1=servoY.read();//获取舵机目前的角度值
   servotemp1-=2;//舵机运动1度
@@ -228,7 +227,6 @@ void setup()
 }
 
 
-void loop()
-{ 
-    sense();
+void loop(){
+  sense();
 }
